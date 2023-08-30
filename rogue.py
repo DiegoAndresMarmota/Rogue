@@ -1,6 +1,6 @@
 import pygame
 from settings.configuration import configurations
-from settings.functions import check_controller
+from settings.functions import check_controller, updated_screen
 from warrior import Warrior
 
 
@@ -26,16 +26,10 @@ def open_game():
     
     # Start the main loop for the game.
     while True:
-        #Import the check_controller function from the functions.py file
+        #Import the []functions from the functions.py file
         check_controller()
+        updated_screen(init_configuration, screen, warrior)
 
-        # Redraw the screen during each pass through the loop with the function bg_screen() with the warrior.bmp
-        screen.fill(init_configuration.bg_screen)
-        warrior.start_on_screen()
 
-        # Make the most recently drawn screen visible. 
-        pygame.display.flip()
-        
-        
 # Execute the main function(Rogue)
 open_game()
