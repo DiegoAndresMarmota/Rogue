@@ -1,6 +1,7 @@
-import sys
 import pygame
 from settings.configuration import configurations
+from settings.functions import check_controller
+from warrior import Warrior
 
 
 def open_game():
@@ -20,17 +21,19 @@ def open_game():
     # Set the caption of the window
     pygame.display.set_caption("Rogue")
     
+    # Create a warrior object.
+    warrior = Warrior(screen)
+    
     # Start the main loop for the game.
     while True:
-        # Watch for keyboard and mouse events.
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                sys.exit()
+        #Import the check_controller function from the functions.py file
+        check_controller()
 
-        # Redraw the screen during each pass through the loop with the function bg_screen()
+        # Redraw the screen during each pass through the loop with the function bg_screen() with the warrior.bmp
         screen.fill(init_configuration.bg_screen)
+        warrior.start_on_screen()
 
-        # Make the most recently drawn screen visible.
+        # Make the most recently drawn screen visible. 
         pygame.display.flip()
         
         
