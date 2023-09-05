@@ -12,7 +12,29 @@ class Warrior():
 
         #Start each new warrior at the bottom center of the screen
         self.rect.centerx = self.screen_rect.centerx
+        self.rect.centery = self.screen_rect.centery
         self.rect.bottom = self.screen_rect.bottom
+        
+        #Movement flag
+        self.moving_right = False
+        self.moving_left = False
+        self.moving_up = False
+        self.moving_down = False
+    
+    #Update the movement of the warrior
+    def init_translation_movement(self):
+        if self.moving_right:
+            self.rect.centerx += 1  
+        
+        if self.moving_left:
+            self.rect.centerx -= 1
+            
+        if self.moving_up:
+            self.rect.centery += 1
+            
+        if self.moving_down:
+            self.rect.centery -= 1
+            
     
     def start_on_screen(self):
         #Draw the warrior on the screen
