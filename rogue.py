@@ -27,7 +27,9 @@ def open_game():
     # Start the main loop for the game.
     while True:
         #Import the []functions from the functions.py file
-        check_controller()
+        check_controller(warrior)
+        # Update the screen during pressing the arrow keys
+        warrior.init_translation_movement()
         updated_screen(init_configuration, screen, warrior)
 
 
