@@ -30,18 +30,19 @@ class Warrior():
     
     #Update the movement of the warrior
     def init_translation_movement(self):
-        if self.moving_right:
+        if self.moving_right and self.rect.right < self.screen_rect.right:
             self.center_x += self.configurations.warrior_speed
         
-        if self.moving_left:
+        if self.moving_left and self.rect.left > 0:
             self.center_x -= self.configurations.warrior_speed
             
-        if self.moving_up:
+        if self.moving_up and self.rect.top > 0:
             self.center_y -= self.configurations.warrior_speed
             
-        if self.moving_down:
+        if self.moving_down and self.rect.bottom < self.screen_rect.bottom:
             self.center_y += self.configurations.warrior_speed
-            
+        
+        #Update the rect object from self.center_x, self.center_y
         self.rect.center = self.center_x, self.center_y
     
     def start_on_screen(self):
