@@ -30,11 +30,11 @@ def check_controller(Warrior):
                 Warrior.moving_down = False
 
 
-def updated_screen(configuration, screen, warrior):
+def updated_screen(configurations, screen, warrior):
     # Update the screen during each pass through the loop.
     
     # Redraw the screen during each pass through the loop with the function bg_screen() with the warrior.bmp
-    screen.fill(configuration.bg_screen)
+    screen.fill(configurations.bg_screen)
     warrior.start_on_screen()
 
     # Make the most recently drawn screen visible. 

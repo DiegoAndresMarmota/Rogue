@@ -1,5 +1,5 @@
 import pygame
-from settings.configuration import configurations
+from settings.configuration import Configurations
 from settings.functions import check_controller, updated_screen
 from warrior import Warrior
 
@@ -11,7 +11,7 @@ def open_game():
     pygame.init()
     
     # Import the configurations class to get the screen width, height, bg_screen
-    init_configuration = configurations()
+    init_configuration = Configurations()
     
     # Create a screen object with the width and height of the screen.
     screen = pygame.display.set_mode((
@@ -22,7 +22,7 @@ def open_game():
     pygame.display.set_caption("Rogue")
     
     # Create a warrior object.
-    warrior = Warrior(screen)
+    warrior = Warrior(screen, Configurations)
     
     # Start the main loop for the game.
     while True:
