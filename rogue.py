@@ -1,5 +1,5 @@
 import pygame
-from settings.configuration import Configurations
+from settings.configurations import Configurations
 from settings.functions import check_controller, updated_screen
 from warrior import Warrior
 
