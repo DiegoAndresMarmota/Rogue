@@ -3,10 +3,11 @@ import pygame
 #Create a class for the warrior
 class Warrior():
     #Iniciate the warrior and establish him position on the screen
-    def __init__(self, screen, Configurations):
+    def __init__(self, screen, configurations):
+        super(Warrior, self).__init__()
         self.screen = screen
         
-        self.configurations = Configurations()
+        self.configurations = configurations
         
         #Upload the image of the warrior and manipulate the image on the screen
         self.image = pygame.image.load('images/warrior.bmp')
@@ -15,7 +16,6 @@ class Warrior():
 
         #Start each new warrior at the bottom center of the screen
         self.rect.centerx = self.screen_rect.centerx
-        self.rect.centery = self.screen_rect.centery
         self.rect.bottom = self.screen_rect.bottom
         
         #Movement flag
@@ -29,7 +29,7 @@ class Warrior():
         self.center_y = float(self.rect.centery)
     
     #Update the movement of the warrior
-    def init_translation_movement(self):
+    def walk(self):
         if self.moving_right and self.rect.right < self.screen_rect.right:
             self.center_x += self.configurations.warrior_speed
         
@@ -41,6 +41,7 @@ class Warrior():
             
         if self.moving_down and self.rect.bottom < self.screen_rect.bottom:
             self.center_y += self.configurations.warrior_speed
+            
         
         #Update the rect object from self.center_x, self.center_y
         self.rect.center = self.center_x, self.center_y

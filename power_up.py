@@ -15,7 +15,7 @@ class PowerUp(Sprite):
         
         #Create a blaster object in the position of warrior
         self.rect = pygame.Rect(
-            0, 0, configurations.blaster_width, configurations.blaster_height)
+            0, 0, configurations.blaster_width, configurations.blaster_height) 
         self.rect.centerx = warrior.rect.centerx
         self.rect.top = warrior.rect.top
 
@@ -27,7 +27,7 @@ class PowerUp(Sprite):
         self.speed = configurations.blaster_speed
 
 
-    def update(self):
+    def shoot(self):
         """Move the blaster upward"""
         #Update the position of the blaster
         self.y -= self.speed
