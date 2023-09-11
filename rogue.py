@@ -2,6 +2,7 @@ import pygame
 from settings.configurations import Configurations
 from settings.functions import check_controller, updated_screen
 from warrior import Warrior
+from pygame.sprite import Group
 
 
 def open_game():
@@ -11,26 +12,30 @@ def open_game():
     pygame.init()
     
     # Import the configurations class to get the screen width, height, bg_screen
-    init_configuration = Configurations()
+    configurations = Configurations()
     
     # Create a screen object with the width and height of the screen.
     screen = pygame.display.set_mode((
-        init_configuration.screen_width,
-        init_configuration.screen_height))
+        configurations.screen_width,
+        configurations.screen_height))
     
     # Set the caption of the window
     pygame.display.set_caption("Rogue")
     
     # Create a warrior object.
-    warrior = Warrior(screen, Configurations)
+    warrior = Warrior(screen, configurations)
+    
+    # Create instance of Group class to store the blaster_skills
+    skills = Group()
     
     # Start the main loop for the game.
     while True:
         #Import the []functions from the functions.py file
-        check_controller(warrior)
+        check_controller(configurations, screen, warrior, skills)
         # Update the screen during pressing the arrow keys
-        warrior.init_translation_movement()
-        updated_screen(init_configuration, screen, warrior)
+        warrior.walk()
+        skills.update()
+        updated_screen(configurations, screen, warrior, skills)
 
 
 # Execute the main function(Rogue)
